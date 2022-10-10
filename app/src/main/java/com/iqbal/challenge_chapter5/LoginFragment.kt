@@ -41,43 +41,25 @@ class LoginFragment : Fragment() {
 
         sharedpref = requireActivity().getSharedPreferences("userdata", Context.MODE_PRIVATE)
 
-        binding.btnLogin.setOnClickListener {
-            var inputUsername = binding.edUser.text.toString()
-            var inputPassword = binding.edPassword.text.toString()
-
-            var userName = sharedpref.getString("username", "")
-            var password = sharedpref.getString("password", "")
-        }
 
 
-            binding.txtRegister.setOnClickListener {
-                Navigation.findNavController(view)
-                    .navigate(R.id.action_loginFragment_to_registerFragment)
-            }
 
             binding.btnLogin.setOnClickListener {
-                var inputUsername = binding.edUser.text.toString()
-                var inputpassword = binding.edPassword.text.toString()
 
-                if (inputUsername.equals("") || password.equals("")){
-                 Toast.makeText(context,"Fill In Username and Password!",Toast.LENGTH_SHORT)
-                }
-                else {
-                    if (inputUsername.equals(userName)){
-                        if (inputpassword.equals(password)){
-                            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
-                        }
-                        else Toast.makeText(context,"Password Invalid",Toast.LENGTH_SHORT).show()
-                    }
-                        else Toast.makeText(context,"Username Invalid!" , Toast.LENGTH_SHORT).show()
-                }
+                var inputUsername = binding.edUser.text.toString()
+                var inputPassword = binding.edPassword.text.toString()
+
+                var userName = sharedpref.getString("username", "")
+                var password = sharedpref.getString("password", "")
+                loginfilm(inputUsername!!,inputPassword!!)
             }
 
-
+        binding.txtRegister.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registerFragment)
         }
-    }
 
-    fun loginfilm(name : String, password : String) {
+    }
+    fun loginfilm(name: String, password: String) {
         APIClient.instance.getAllUser()
             .enqueue(object : Callback<List<GetUserResponseItem>> {
                 override fun onResponse(
@@ -85,28 +67,37 @@ class LoginFragment : Fragment() {
                     response: Response<List<GetUserResponseItem>>
                 ) {
                     var data = false
-                   if (response.isSuccessful){
-                    if (response.body() != null){
-                        val respon = response.body()
-                        for (i in 0 until respon!!.size){
-                            if(respon[i].name.equals(name)&& respon[i].password.equals(password)){
-                                data = true
+                    if (response.isSuccessful) {
+                        if (response.body() != null) {
+                            val respon = response.body()
+                            for (i in 0 until respon!!.size) {
+                                if (respon[i].name.equals(name) && respon[i].password.equals(
+                                        password
+                                    )
+                                ) {
+                                    data = true
 
-                            var addUser = sharedpref.edit()
-                                addUser.putString("id",respon[i].id)
-                                addUser.putString("username",name)
-                                addUser.putString("password",password)
-                                addUser.putString("name",respon[i].name)
-                                addUser.putString("age",respon[i].password)
-                                addUser.apply()
+                                    var addUser = sharedpref.edit()
+                                    addUser.putString("id", respon[i].id)
+                                    addUser.putString("username", name)
+                                    addUser.putString("password", password)
+                                    addUser.putString("name", respon[i].name)
+                                    addUser.putString("age", respon[i].password)
+                                    addUser.apply()
 
-                                Toast.makeText( context,"Login Sukses", Toast.LENGTH_SHORT).show()
-                                Navigation.findNavController(view!!).navigate(R.id.action_loginFragment_to_homeFragment)
+                                    Toast.makeText(context, "Login Sukses", Toast.LENGTH_SHORT)
+                                        .show()
+                                    Navigation.findNavController(view!!)
+                                        .navigate(R.id.action_loginFragment_to_homeFragment)
+                                }
                             }
+                            if (data == false) Toast.makeText(
+                                context,
+                                "Wrong  Username or Password",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                        if (data == false) Toast.makeText(context ,"Wrong  Username or Password", Toast.LENGTH_SHORT).show()
                     }
-                   }
                 }
 
                 override fun onFailure(call: Call<List<GetUserResponseItem>>, t: Throwable) {

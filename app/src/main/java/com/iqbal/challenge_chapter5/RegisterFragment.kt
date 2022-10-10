@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
 import com.iqbal.challenge_chapter5.databinding.FragmentRegisterBinding
 import com.iqbal.challenge_chapter5.viewmodel.ViewModelUser
 
@@ -28,6 +27,21 @@ class RegisterFragment : Fragment() {
         return binding.root
 
 
+    }
+    fun addUser(name:String, username:String, password:String) {
+        var viewModel = ViewModelProvider(this).get(ViewModelUser::class.java)
+        viewModel.callPostApiUser(name, username, password)
+        viewModel.postLiveDataUser().observe(viewLifecycleOwner, {
+            if (it != null) {
+                Toast.makeText(context, "Registration Success!", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         binding.btnRegister.setOnClickListener{
             var editname = binding.edRegisterUser.text.toString()
             var editpassword = binding.edRegisterPassword.text.toString()
@@ -37,19 +51,8 @@ class RegisterFragment : Fragment() {
 
                 addUser(editname,editpassword,editreapeatpass)
 
-                view?.let { it1 -> findNavController(it1).navigate(R.id.action_registerFragment_to_loginFragment) }
+                Navigation.findNavController(requireView()).navigate(R.id.action_registerFragment_to_loginFragment)
             }
         }
-
-    }
-    fun addUser(name:String, username:String, password:String,) {
-        var viewModel = ViewModelProvider(this).get(ViewModelUser::class.java)
-        viewModel.callPostApiUser(name, username, password)
-        viewModel.postLiveDataUser().observe(viewLifecycleOwner, {
-            if (it != null) {
-                Toast.makeText(context, "Registration Success!", Toast.LENGTH_SHORT).show()
-            }
-        })
-
     }
 }

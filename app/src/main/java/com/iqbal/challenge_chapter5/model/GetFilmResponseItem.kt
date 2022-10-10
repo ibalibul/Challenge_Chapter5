@@ -2,6 +2,7 @@ package com.iqbal.challenge_chapter5.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class GetFilmResponseItem(
     @SerializedName("description")
@@ -14,4 +15,4 @@ data class GetFilmResponseItem(
     val image: String,
     @SerializedName("name")
     val name: String
-)
+):Serializable

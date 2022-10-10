@@ -1,5 +1,7 @@
 package com.iqbal.challenge_chapter5
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,6 +24,7 @@ import retrofit2.Response
 class HomeFragment : Fragment() {
 
     lateinit var binding : FragmentHomeBinding
+    lateinit var sharedpref : SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +40,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         showFilm()
+
+        sharedpref = requireContext().getSharedPreferences("userdata", Context.MODE_PRIVATE)
+
+        binding.tvUsername.setText(sharedpref.getString("username",""))
 
     }
 
