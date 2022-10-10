@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterFragment">
+
+    <TextView
+        android:layout_margin="20dp"
+        android:id="@+id/Register"
+        android:text="Register"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/ed_Register_user"
+        android:hint="Username"
+        android:layout_below="@+id/Register"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/ed_email_register"
+        android:hint="Email"
+        android:layout_below="@+id/ed_Register_user"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/ed_Register_password"
+        android:hint="Password"
+        android:layout_below="@+id/ed_email_register"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/ed_Register_passwordRepeat"
+        android:hint="Repeat Password"
+        android:layout_below="@+id/ed_Register_password"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ed_Register_passwordRepeat"
+        android:layout_centerHorizontal="true"
+        android:text="Register" />
+
+</RelativeLayout>

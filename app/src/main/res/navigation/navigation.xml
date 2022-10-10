@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.iqbal.challenge_chapter5.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFilmFragment"
+            app:destination="@id/detailFilmFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addFilmFragment"
+            app:destination="@id/addFilmFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_updateFilmFragment"
+            app:destination="@id/updateFilmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.iqbal.challenge_chapter5.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.iqbal.challenge_chapter5.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFilmFragment"
+        android:name="com.iqbal.challenge_chapter5.DetailFilmFragment"
+        android:label="fragment_detail_film"
+        tools:layout="@layout/fragment_detail_film" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.iqbal.challenge_chapter5.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFilmFragment"
+        android:name="com.iqbal.challenge_chapter5.AddFilmFragment"
+        android:label="fragment_add_film"
+        tools:layout="@layout/fragment_add_film" >
+        <action
+            android:id="@+id/action_addFilmFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFilmFragment"
+        android:name="com.iqbal.challenge_chapter5.UpdateFilmFragment"
+        android:label="fragment_update_film"
+        tools:layout="@layout/fragment_update_film" >
+        <action
+            android:id="@+id/action_updateFilmFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>

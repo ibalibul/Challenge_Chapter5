@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginFragment">
+
+    <TextView
+        android:layout_margin="20dp"
+        android:id="@+id/txtlogin"
+        android:text="Login"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/ed_user"
+        android:hint="Username"
+        android:layout_below="@+id/txtlogin"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/ed_password"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_below="@+id/ed_user"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageButton
+        android:id="@+id/showHidenBtn"
+        android:layout_below="@+id/ed_user"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_baseline_remove_red_eye_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ed_password"
+        android:text="Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txtRegister"
+        android:text="Register"
+        android:textColor="@color/black"
+        android:layout_below="@+id/btn_login"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
