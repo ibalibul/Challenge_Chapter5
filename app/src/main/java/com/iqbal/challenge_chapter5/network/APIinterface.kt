@@ -1,9 +1,6 @@
 package com.iqbal.challenge_chapter5.network
 
-import com.iqbal.challenge_chapter5.model.DataFilm
-import com.iqbal.challenge_chapter5.model.DataUser
-import com.iqbal.challenge_chapter5.model.GetFilmResponseItem
-import com.iqbal.challenge_chapter5.model.GetUserResponseItem
+import com.iqbal.challenge_chapter5.model.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -16,13 +13,13 @@ interface APIinterface {
     fun addDataFilm(@Body request : DataFilm) : Call<GetFilmResponseItem>
 
     @GET("user")
-    fun getAllUser() : Call<List<GetUserResponseItem>>
+    fun getAllUser() : Call<List<GetResponseUserNewItem>>
 
     @POST("user")
-    fun registerUser(@Body request : DataUser) : Call<GetUserResponseItem>
+    fun registerUser(@Body request : DataUser) : Call<GetResponseUserNewItem>
 
-    @PUT("film/{id}")
-    fun UpdateDataFilm(@Path("id")id : Int,@Body reques : DataUser) : Call<GetUserResponseItem>
+    @PUT("user/{id}")
+    fun UpdateDataFilm(@Path("id")id : String,@Body reques : DataUser) : Call<GetResponseUserNewItem>
 
     @DELETE("film/{id}")
     fun deletFilm(@Path("id")id: Int) : Call<GetFilmResponseItem>

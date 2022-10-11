@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.iqbal.challenge_chapter5.databinding.FragmentLoginBinding
+import com.iqbal.challenge_chapter5.model.GetResponseUserNewItem
 import com.iqbal.challenge_chapter5.model.GetUserResponseItem
 import com.iqbal.challenge_chapter5.network.APIClient
 import com.iqbal.challenge_chapter5.viewmodel.ViewModelUser
@@ -72,19 +73,17 @@ class LoginFragment : Fragment() {
     }
     fun loginfilm(name: String, password: String) {
         APIClient.instance.getAllUser()
-            .enqueue(object : Callback<List<GetUserResponseItem>> {
+            .enqueue(object : Callback<List<GetResponseUserNewItem>> {
                 override fun onResponse(
-                    call: Call<List<GetUserResponseItem>>,
-                    response: Response<List<GetUserResponseItem>>
+                    call: Call<List<GetResponseUserNewItem>>,
+                    response: Response<List<GetResponseUserNewItem>>
                 ) {
                     var data = false
                     if (response.isSuccessful) {
                         if (response.body() != null) {
                             val respon = response.body()
                             for (i in 0 until respon!!.size) {
-                                if (respon[i].name.equals(name) && respon[i].password.equals(
-                                        password
-                                    )
+                                if (respon[i].username == name && respon[i].password == password
                                 ) {
                                     data = true
 
@@ -93,6 +92,7 @@ class LoginFragment : Fragment() {
                                     addUser.putString("username", name)
                                     addUser.putString("password", password)
                                     addUser.putString("name", respon[i].name)
+                                    addUser.putString("session","true")
                                     addUser.apply()
 
                                     Toast.makeText(context, "Login Sukses", Toast.LENGTH_SHORT)
@@ -110,7 +110,7 @@ class LoginFragment : Fragment() {
                     }
                 }
 
-                override fun onFailure(call: Call<List<GetUserResponseItem>>, t: Throwable) {
+                override fun onFailure(call: Call<List<GetResponseUserNewItem>>, t: Throwable) {
 
                 }
 

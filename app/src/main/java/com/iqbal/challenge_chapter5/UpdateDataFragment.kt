@@ -1,5 +1,7 @@
 package com.iqbal.challenge_chapter5
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +17,7 @@ import com.iqbal.challenge_chapter5.viewmodel.ViewModelUser
 class UpdateDataFragment : Fragment() {
 
 
+    lateinit var shrepref : SharedPreferences
     lateinit var binding : FragmentUpdateDataBinding
     lateinit var viewModel : ViewModelUser
 
@@ -32,18 +35,38 @@ class UpdateDataFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(ViewModelUser::class.java)
 
+        shrepref = requireActivity().getSharedPreferences("userdata",Context.MODE_PRIVATE)
+
+        var username = shrepref.getString("username","")
+        var fpassword = shrepref.getString("password","")
+
+
+        binding.edUpdateUser.setText(username)
+        binding.edUpdatePassword.setText(fpassword)
+
         binding.btnSimpan.setOnClickListener{
+            setDataToInput()
 
         }
 
-        setDataToInput()
+
+
+
+
     }
 
+
+
     fun setDataToInput(){
-        var name = binding.edUpdateUser.text.toString()
+
+        var add = shrepref.getString("id","")
+        var fname = shrepref.getString("name","")
+
+
+        var username = binding.edUpdateUser.text.toString()
         var password = binding.edUpdatePassword.text.toString()
 
-        viewModel.UpdateDataUser(id,name,password)
+        viewModel.UpdateDataUser(add!!,fname!!,username,password)
         viewModel.updateLiveData().observe(viewLifecycleOwner, Observer {
             if (it != null){
                 Toast.makeText(requireContext(),"update Sukses",Toast.LENGTH_SHORT).show()
