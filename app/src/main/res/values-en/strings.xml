@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Challenge_Chapter5</string>
+    <string name="login">login</string>
+    <string name="masuk_login">login</string>
+    <string name="selamat_datang">Welcome</string>
+    <string name="hello_username">Hello,Username</string>
+</resources>

@@ -3,4 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dummy_photo">6 photo</string>
+    <string name="login">Login</string>
+    <string name="masuk_login">Login</string>
+    <string name="hello_username">Hello, Username</string>
+    <string name="selamat_datang">Selamat Datang</string>
 </resources>

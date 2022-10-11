@@ -10,17 +10,11 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_detailFilmFragment"
-            app:destination="@id/detailFilmFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_addFilmFragment"
-            app:destination="@id/addFilmFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_updateFilmFragment"
-            app:destination="@id/updateFilmFragment" />
+            android:id="@+id/action_homeFragment_to_detailMovieFragment"
+            app:destination="@id/detailMovieFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -44,11 +38,6 @@
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/detailFilmFragment"
-        android:name="com.iqbal.challenge_chapter5.DetailFilmFragment"
-        android:label="fragment_detail_film"
-        tools:layout="@layout/fragment_detail_film" />
-    <fragment
         android:id="@+id/profileFragment"
         android:name="com.iqbal.challenge_chapter5.ProfileFragment"
         android:label="fragment_profile"
@@ -56,23 +45,18 @@
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_updateDataFragment"
+            app:destination="@id/updateDataFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addFilmFragment"
-        android:name="com.iqbal.challenge_chapter5.AddFilmFragment"
-        android:label="fragment_add_film"
-        tools:layout="@layout/fragment_add_film" >
-        <action
-            android:id="@+id/action_addFilmFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        android:id="@+id/detailMovieFragment"
+        android:name="com.iqbal.challenge_chapter5.DetailMovieFragment"
+        android:label="fragment_detail_movie"
+        tools:layout="@layout/fragment_detail_movie" />
     <fragment
-        android:id="@+id/updateFilmFragment"
-        android:name="com.iqbal.challenge_chapter5.UpdateFilmFragment"
-        android:label="fragment_update_film"
-        tools:layout="@layout/fragment_update_film" >
-        <action
-            android:id="@+id/action_updateFilmFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        android:id="@+id/updateDataFragment"
+        android:name="com.iqbal.challenge_chapter5.UpdateDataFragment"
+        android:label="fragment_update_data"
+        tools:layout="@layout/fragment_update_data" />
 </navigation>

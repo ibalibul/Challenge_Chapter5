@@ -22,7 +22,7 @@ interface APIinterface {
     fun registerUser(@Body request : DataUser) : Call<GetUserResponseItem>
 
     @PUT("film/{id}")
-    fun UpdateDataFilm(@Path("id")id : Int) : Call<GetFilmResponseItem>
+    fun UpdateDataFilm(@Path("id")id : Int,@Body reques : DataUser) : Call<GetUserResponseItem>
 
     @DELETE("film/{id}")
     fun deletFilm(@Path("id")id: Int) : Call<GetFilmResponseItem>

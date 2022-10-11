@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iqbal.challenge_chapter5.adapter.FilmAdapter
 import com.iqbal.challenge_chapter5.databinding.FragmentHomeBinding
@@ -42,6 +43,10 @@ class HomeFragment : Fragment() {
         showFilm()
 
         sharedpref = requireContext().getSharedPreferences("userdata", Context.MODE_PRIVATE)
+
+        binding.imgProfile.setOnClickListener{
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+        }
 
         binding.tvUsername.setText(sharedpref.getString("username",""))
 

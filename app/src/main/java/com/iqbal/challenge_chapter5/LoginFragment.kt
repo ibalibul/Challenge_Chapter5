@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.iqbal.challenge_chapter5.databinding.FragmentLoginBinding
 import com.iqbal.challenge_chapter5.model.GetUserResponseItem
 import com.iqbal.challenge_chapter5.network.APIClient
@@ -17,6 +18,7 @@ import com.iqbal.challenge_chapter5.viewmodel.ViewModelUser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 
 class LoginFragment : Fragment() {
@@ -58,6 +60,15 @@ class LoginFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
+
+
+        binding.txtIndonesia.setOnClickListener{
+            setLocale("id")
+        }
+        binding.txtEnglish.setOnClickListener{
+            setLocale("en")
+        }
+
     }
     fun loginfilm(name: String, password: String) {
         APIClient.instance.getAllUser()
@@ -82,7 +93,6 @@ class LoginFragment : Fragment() {
                                     addUser.putString("username", name)
                                     addUser.putString("password", password)
                                     addUser.putString("name", respon[i].name)
-                                    addUser.putString("age", respon[i].password)
                                     addUser.apply()
 
                                     Toast.makeText(context, "Login Sukses", Toast.LENGTH_SHORT)
@@ -105,5 +115,13 @@ class LoginFragment : Fragment() {
                 }
 
             })
+    }
+
+    fun setLocale (lang : String){
+        val lokal = Locale(lang)
+        val conf = resources.configuration
+        conf.locale = lokal
+        resources.updateConfiguration(conf, resources.displayMetrics)
+        activity?.startActivity(Intent(activity,MainActivity::class.java))
     }
 }

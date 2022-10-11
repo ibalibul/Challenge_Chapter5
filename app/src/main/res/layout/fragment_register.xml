@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_marun"
     tools:context=".RegisterFragment">
 
     <TextView
         android:layout_margin="20dp"
         android:id="@+id/Register"
+        android:textColor="@color/white"
         android:text="Register"
+        android:textStyle="italic"
         android:textSize="30dp"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
@@ -18,6 +21,9 @@
     <EditText
         android:id="@+id/ed_Register_user"
         android:hint="Username"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
         android:layout_below="@+id/Register"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
@@ -26,6 +32,9 @@
     <EditText
         android:id="@+id/ed_email_register"
         android:hint="Email"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
         android:layout_below="@+id/ed_Register_user"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
@@ -34,6 +43,9 @@
     <EditText
         android:id="@+id/ed_Register_password"
         android:hint="Password"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
         android:layout_below="@+id/ed_email_register"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
@@ -42,6 +54,9 @@
     <EditText
         android:id="@+id/ed_Register_passwordRepeat"
         android:hint="Repeat Password"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:backgroundTint="@color/white"
         android:layout_below="@+id/ed_Register_password"
         android:layout_margin="10dp"
         android:layout_width="match_parent"

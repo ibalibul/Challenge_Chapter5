@@ -31,7 +31,7 @@ class FilmAdapter (var listFilm : List<GetFilmResponseItem>) : RecyclerView.Adap
         holder.binding.cardView.setOnClickListener{
             var bund = Bundle()
             bund.putSerializable("datafilm",listFilm[position])
-            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_detailFilmFragment,bund)
+            Navigation.findNavController(it).navigate(R.id.action_homeFragment_to_detailMovieFragment,bund)
 
         }
 
