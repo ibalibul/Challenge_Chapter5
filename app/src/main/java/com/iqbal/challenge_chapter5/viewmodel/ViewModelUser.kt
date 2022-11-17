@@ -11,6 +11,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class ViewModelUser : ViewModel(){
 
     lateinit var postLDUser : MutableLiveData<GetResponseUserNewItem?>
@@ -30,8 +31,7 @@ class ViewModelUser : ViewModel(){
     }
 
     fun callPostApiUser(name : String, username : String, password : String ) {
-        APIClient.instance.registerUser(
-            DataUser(name, username,password))
+        APIClient.instance.registerUser(DataUser(name, username,password))
             .enqueue(object : retrofit2.Callback<GetResponseUserNewItem>{
                 override fun onResponse(
                     call: Call<GetResponseUserNewItem>,
